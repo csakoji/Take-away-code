@@ -1,0 +1,40 @@
+# example numver is 5019 and 12345
+
+
+def return_sum(num):
+    anum = str(num)
+    asum = 0
+    astr = list()
+    bstr = list()
+    cstr = list()
+    astr.append([char for char in anum])
+    count = 0
+    # while(count < len(str(num)) - 1):
+    i = 1
+    anum = str(num)[count:len(str(num))]
+    while(i < len(str(num))):
+        # print("111111111111111111111111111111111")
+        astr.append([anum[:i], anum[i:], anum[:count]])
+        i += 1
+    print(astr)
+    count += 1
+    i = 1
+    anum = str(num)[count:len(str(num))]
+    while(i < len(str(num))-1):
+        # print("222222222222222222222222222222")
+        bstr.append([anum[:i], anum[i:], str(num)[:count]])
+        i += 1
+    print(bstr)
+    i = 1
+    count += 1
+    anum = str(num)[2:len(str(num))]
+    while(i < len(str(num))-2):
+        # print("33333333333333333333333333333333333")
+        cstr.append([anum[:i], anum[i:], str(num)[:count]])
+        i += 1
+    print(cstr)
+
+
+
+
+return_sum(5019)

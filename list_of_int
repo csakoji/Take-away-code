@@ -1,72 +1,29 @@
-# example numver is 5019 and 12345
-
-
-def return_sum(num):
-    anum = str(num)
-    asum = 0
-    astr = list()
-    bstr = list()
-    cstr = list()
-    astr.append([char for char in anum])
+def return_alist(anum):
+    num1 = str(anum)
+    alist = list()
+    alist.append([val for val in num1])
     count = 0
-    # while(count < len(str(num)) - 1):
-    i = 1
-    anum = str(num)[count:len(str(num))]
-    while(i < len(str(num))):
-        # print("111111111111111111111111111111111")
-        astr.append([anum[:i], anum[i:], anum[:count]])
-        i += 1
-    print(astr)
-    count += 1
-    i = 1
-    anum = str(num)[count:len(str(num))]
-    while(i < len(str(num))-1):
-        # print("222222222222222222222222222222")
-        bstr.append([anum[:i], anum[i:], str(num)[:count]])
-        i += 1
-    print(bstr)
-    i = 1
-    count += 1
-    anum = str(num)[2:len(str(num))]
-    while(i < len(str(num))-2):
-        # print("33333333333333333333333333333333333")
-        cstr.append([anum[:i], anum[i:], str(num)[:count]])
-        i += 1
-    print(cstr)
-    
-    
-    ################################### 9/1/18
-    # Sample number is 9457
-# Expected is 4301
+    while(count < len(num1)):
+        num2 = list(num1)
+        aele = num2[count]
+        num2.remove(num2[count])
+        alist.append([num2, [aele]])
+        count1 = 1
+        while(count1 < len(num2)):
+            alist.append([num2[:count1], num2[count1:], [aele]])
+            count1 += 1
+        count += 1
 
-def list_sum_of_num(num):
-	num2 = str(num)
-	alist = list()
-	alist.append([char for char in num2])
-	count1 = 0
-	while(count1 < len(num2)):
-		num1 = list(num2)
-		# print("count1 {}".format(count1))
-		aele = num1[count1]
-		num1.remove(aele)
-		num1.insert(0, aele)
-		count1 += 1
-		count = 0
-		while(count < len(num1) - 1):
-			i = 1
-			anum = num1[count:]
-			while(i < len(num1) - count):
-				alist.append([anum[i:], anum[:i], num1[:count]])
-				# print([anum[i:], anum[:i], num1[:count]])
-				i+= 1
-			count += 1
-		# print(alist)
-
-	print(len(alist))
-	for ele in alist:
-		print(ele)
-		print("\n")
+    blist = list()
+    for ele in alist:
+        ele.sort()
+        if ele not in blist:
+            blist.append(ele)
+            print(ele)
+    print(len(blist))
+    # print(blist)
 
 
-list_sum_of_num(9457)
-return_sum(5019)
+return_alist(9457)
+
+# Still not completely working

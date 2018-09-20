@@ -1,0 +1,30 @@
+a = "chai"
+b = iter(a)
+
+def make_looper(string):
+	def myfun():
+		for char in iter(string):
+			yield char
+	return myfun()
+
+global aobj
+aobj = make_looper(a)
+
+def decorator():
+	global aobj
+	try:
+		# print("try")
+		return next(aobj)
+
+	except Exception as error:
+		# print("Exception is {}".format(error))
+		aobj = make_looper(a)		
+		return next(aobj)
+		# pass
+		# return 12
+
+# aobj = make_looper(a)
+
+for i in range(12):
+	print(decorator())
+	# print("{}th call".format(i))

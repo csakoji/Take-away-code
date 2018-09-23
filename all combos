@@ -1,0 +1,27 @@
+import logging
+
+logging.basicConfig(level=logging.WARNING, format='%(message)s')
+anum = 5
+
+def all_combos(anum):
+	one_list = [1 for i in range(anum)]
+	logging.debug("one_list is {}".format(one_list))
+	alist = list()
+	for i in range(1, len(one_list) - 1):
+		tlist = [sum(one_list[i:])]
+		tlist.extend(one_list[:i])
+		alist.append(tlist[::-1])
+	logging.debug("alist is {}".format(alist))
+	blist = list()
+	for ele in alist[1:]:
+		for i in range(2, len(ele)):
+			tlist = [sum(ele[:i])]
+			tlist.extend(ele[i:])
+			tlist.sort()
+			if tlist not in blist:
+				blist.append(tlist)
+	blist.extend(alist)
+	blist.extend(one_list)
+	logging.warning("blist is {}".format(blist))
+
+all_combos(5)

@@ -1,0 +1,20 @@
+astr = "+1-541-984-3012 Pollocksville, <P Reed> /PO Box 530; NC-28573"
+p1 = re.compile(r'(<.*>)|(\+\d{1,2}-\d{3}-\d{3}-\d{4})|([a-zA-Z,]+)')
+# p2 = re.compile(r'([a-zA-Z]+)')
+m1 = p1.findall(astr)
+# m2 = p2.findall(astr)
+# print([ele for item in p.findall(astr) for ele in item if ele != ""])
+print(m1)
+alist = list()
+blist = list()
+for item in m1:
+	if item[0] != "":
+		alist.append("name=>{}".format(item[0][1:-1]))
+	elif item[1] != "": 
+		alist.append("number=>{}".format(item[1]))
+	else:
+		blist.append(item[-1])
+aval = " ".join(blist)
+alist.append("address=>{}".format(aval))
+
+print(alist)
